@@ -1,3 +1,5 @@
+<# Using tasklist results vs Get-Process #>
+
 $origin = tasklist /V /FO csv | ConvertFrom-CSV
 
 $output = New-Object PSCustomObject[] ($origin.Length)
@@ -13,3 +15,4 @@ for ($i=0; $i -lt $origin.Length; $i++)
         memoryUsage = [Int] ($origin[$i].'Mem Usage' -replace '[a-z]')
     }
 }
+
